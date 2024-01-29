@@ -19,4 +19,5 @@ Route::get('/', function () {
 });
 
 Route::get('/register', [AuthController::class, 'showForm'])->name('register');
+Route::post('/registerUser', [AuthController::class, 'stor'])->name('registerUser');
 Route::get('/login', [AuthController::class, 'index'])->name('login');

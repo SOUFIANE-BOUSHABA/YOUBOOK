@@ -7,7 +7,17 @@
                 <div class="card-header">Register</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    @if($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <form method="POST" action="{{ route('registerUser') }}">
                         @csrf
 
                         <div class="mb-3">
