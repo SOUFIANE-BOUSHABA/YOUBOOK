@@ -28,3 +28,5 @@ Route::get('/booksAdmin' , [BookController::class, 'showBooks'])->name('show.boo
 
 
 Route::post('/store/book', [BookController::class, 'store'])->name('store.books');
+
+Route::delete('/delete/{id}',[BookController::class , 'delete'])->name('delete.book');
