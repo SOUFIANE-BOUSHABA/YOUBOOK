@@ -29,4 +29,15 @@ class BookController extends Controller
         Livre::find($id)->delete();
         return redirect()->route('show.books');
     }
+
+    public function updateBook(Request $request , $id){
+        $book = Livre::find($id);
+        $book->update([
+            'titre'=> $request->name,
+            'auteur'=> $request->auteur,
+            'annee_publication'=> $request->annee_publication,
+            
+        ]);
+        return redirect()->route('show.books');
+    }
 }
