@@ -24,4 +24,7 @@ Route::post('/registerUser', [AuthController::class, 'stor'])->name('registerUse
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login');  
 
-Route::get('/booksAdmin' , [BookController::class, 'showBooks'])->name('store.books');
+Route::get('/booksAdmin' , [BookController::class, 'showBooks'])->name('show.books');
+
+
+Route::post('/store/book', [BookController::class, 'store'])->name('store.books');

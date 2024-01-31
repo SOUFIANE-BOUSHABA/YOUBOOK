@@ -17,7 +17,7 @@ class CreateLivresTable extends Migration
             $table->id();
             $table->string('titre');
             $table->string('auteur');
-            $table->integer('annee_publication');
+            $table->date('annee_publication');
             $table->string('statut');
             $table->timestamps();
             $table->engine = "InnoDB";

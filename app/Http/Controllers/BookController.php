@@ -12,4 +12,14 @@ class BookController extends Controller
         $books =Livre::all();
         return view('backOffice.book' , compact('books'));
     }
+
+    public function store(Request $request){
+        $book =Livre::create([
+            'titre'=> $request->name,
+            'auteur'=> $request->auteur,
+            'annee_publication'=> $request->annee_publication,
+            'statut'=> 'ne pas reserver',
+        ]);
+        return redirect()->route('show.books');
+    }
 }

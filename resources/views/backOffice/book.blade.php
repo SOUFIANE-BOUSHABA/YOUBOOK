@@ -20,12 +20,28 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                      ...
+                        <form id="addBookForm" action="{{route('store.books')}}" method="post">
+                        
+                            @csrf
+        
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+        
+                            <div class="mb-3">
+                                <label for="auteur" class="form-label">Auteur</label>
+                                <input type="text" class="form-control" id="auteur" name="auteur" required>
+                            </div>
+        
+                            <div class="mb-3">
+                                <label for="annee_publication" class="form-label">Annee de Publication</label>
+                                <input type="date" class="form-control" id="annee_publication" name="annee_publication" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                        </form>
                     </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
+                  
                   </div>
                 </div>
             </div>
