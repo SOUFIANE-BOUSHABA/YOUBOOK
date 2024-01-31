@@ -5,6 +5,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 
 class AuthController extends Controller
@@ -36,4 +37,14 @@ class AuthController extends Controller
 
         return redirect()->route('login');
     }
+
+
+    public function login(Request $request){
+    $donnerUser = $request->only('email', 'password');
+    if (Auth::attempt($donnerUser)) {
+        return redirect()->action([BookController::class, 'showBooks']);
+    }
+    return redirect()->route('login')->with('error', 'Invalid email or password.');
+}
+
 }

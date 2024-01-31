@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController; 
 
@@ -21,3 +22,6 @@ Route::get('/', function () {
 Route::get('/register', [AuthController::class, 'showForm'])->name('register');
 Route::post('/registerUser', [AuthController::class, 'stor'])->name('registerUser');
 Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login');  
+
+Route::get('/booksAdmin' , [BookController::class, 'showBooks'])->name('store.books');
