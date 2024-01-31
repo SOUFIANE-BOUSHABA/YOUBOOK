@@ -39,11 +39,20 @@ class AuthController extends Controller
     }
 
 
+
+
     public function login(Request $request){
     $donnerUser = $request->only('email', 'password');
     if (Auth::attempt($donnerUser)) {
-        return redirect()->action([BookController::class, 'showBooks']);
+        $user = Auth::user();
+        session(['user_id' => $user->id, 'user_name' => $user->name]);
+        if ($user->role === 'admin') {
+            return redirect()->route('show.books');
+        } else {
+            return redirect()->route('show.books.user');
+        }
     }
+
     return redirect()->route('login')->with('error', 'Invalid email or password.');
 }
 

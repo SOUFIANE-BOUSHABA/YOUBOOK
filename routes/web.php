@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController; 
+use App\Http\Controllers\AuthController;
+use App\Models\Reservation;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +33,11 @@ Route::post('/store/book', [BookController::class, 'store'])->name('store.books'
 
 Route::delete('/delete/{id}',[BookController::class , 'delete'])->name('delete.book');
 Route::put('/update/{id}' , [BookController::class , 'updateBook'])->name('edit.book');
+
+Route::get('/reservation' , [ReservationController::class , 'show'])->name('show.reservetion');
+
+Route::get('/showBookUser', [BookController::class, 'showBooksForUser'])->name('show.books.user');
+
+Route::get('/details/book/{id}', [BookController::class, 'showDetailBook'])->name('details.book');
+
+Route::post('/resrever' , [ReservationController::class , 'stor'])->name('stor.reservation');
