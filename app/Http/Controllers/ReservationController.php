@@ -43,10 +43,10 @@ class ReservationController extends Controller
 
             Session::flash('success', 'Reservation successful.');
         } else {
-            Session::flash('error', 'The book is already reserved for the specified date range.');
+            Session::flash('error', 'The book is already reserved ');
         }
 
-        return redirect()->back();
+        return redirect("/details/book/$request->book_id");
     }
         
 }
