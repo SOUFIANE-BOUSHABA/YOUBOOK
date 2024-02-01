@@ -41,3 +41,6 @@ Route::get('/showBookUser', [BookController::class, 'showBooksForUser'])->name('
 Route::get('/details/book/{id}', [BookController::class, 'showDetailBook'])->name('details.book');
 
 Route::post('/resrever' , [ReservationController::class , 'stor'])->name('stor.reservation');
+
+
+Route::get('/test',  [BookController::class, 'search'])->name('search.books');

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Livre;
 use Illuminate\Pagination\Paginator;
-
+use Illuminate\Support\Facades\Input;
 
 class BookController extends Controller
 {
@@ -56,5 +56,12 @@ class BookController extends Controller
     public function showDetailBook($id){
         $book=Livre::find($id);
          return view('frontOffice.detail' , compact('book'));
+    }
+
+
+
+    public function search(Request $request){
+        dd($request);
+    return 'hhhhhhhhhhhhh';
     }
 }

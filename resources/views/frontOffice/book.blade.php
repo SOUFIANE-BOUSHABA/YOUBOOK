@@ -2,12 +2,12 @@
 
 @section('content')
 <div class="mb-3">
-    <input type="text" class="form-control" placeholder="Rechercher des livres...">
+    <input type="text" class="form-control" placeholder="Rechercher des livres..." onkeyup="searchBooks(this.value)">
 </div>
 
 <div class="d-flex">
 
-    <div class="row row-cols-1 row-cols-md-4 g-4">
+    <div class="row row-cols-1 row-cols-md-4 g-4"  id="search-results">
         @foreach ($books as $book)
                 <a href="{{route('details.book',$book->id)}}" style="text-decoration: none; color:black">
                     <div class="col">
@@ -29,4 +29,19 @@
     </div>
 </div>
 
+<script>
+   function searchBooks(query) {
+    console.log('Search query:', query);
+
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById('search-results').innerHTML = this.responseText;
+        }
+    };
+
+    xhr.open('GET', "{{ route('search.books') }}?query=" + query, true);
+    xhr.send();
+}
+</script>
 @endsection
